@@ -23,7 +23,7 @@
       path: /app
     register: directory
   
-  - when: directory.stat.exists == 'False'
+  - when: directory.stat.exists == "False"
     name: create a directory if it doesnot exist
     ansible.builtin.file:
       path: /app
