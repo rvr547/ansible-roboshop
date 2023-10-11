@@ -1,0 +1,11 @@
+- name: install catalogue componenet
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: setup npm sorce
+    ansible.builtin.script: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  - name: install node js
+    ansible.builtin.yum:
+     name: nodejs
+     state: installed
+     
