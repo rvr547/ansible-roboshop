@@ -41,6 +41,37 @@
       dest: /app
       remote_src: yes
 
+  - name: Install dependencies
+    ansible.buitin.command: npm install
+      args:
+      chdir: /app
+    
+  - name: Copy catalogue service
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service
 
+  - name: Deamon reload
+    ansible.builtin.systemd:
+      deamon_reload: true
   
+  - name: copy mongorepo to yum.repos.d
+    ansible.builtin.copy:
+      src: mongodb.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
+  - name: install mondo db client 
+    ansible.builtin.yum:
+      name: mongodb-org-shell
+      state: installed
+
+  - name: Load schema
+    ansible.buitin.command: mongo --host mongodb.preprv.online </app/schema/catalogue.js
+
+  - name: Restart catlogue
+    ansible.builtin.service:
+      name: catalogue
+      state: restarted
+      enabled: true
+      
 
