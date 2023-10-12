@@ -53,7 +53,7 @@
 
   - name: Deamon reload
     ansible.builtin.systemd:
-      deamon_reload: true
+      daemon_reload: true
   
   - name: copy mongorepo to yum.repos.d
     ansible.builtin.copy:
