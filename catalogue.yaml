@@ -43,7 +43,7 @@
 
   - name: Install dependencies
     ansible.buitin.command: npm install
-      args:
+    args:
       chdir: /app
     
   - name: Copy catalogue service
