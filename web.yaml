@@ -8,10 +8,10 @@
       state: installed
 
   - name: Start nginx
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: true
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: true
 
   - name: Remove html directory
     ansible.builtin.file:
@@ -40,8 +40,8 @@
       dest: /etc/nginx/default.d/roboshop.conf 
 
   - name: Restart nginx
-      ansible.builtin.service:
-        name: nginx
-        state: restarted
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
         
     
